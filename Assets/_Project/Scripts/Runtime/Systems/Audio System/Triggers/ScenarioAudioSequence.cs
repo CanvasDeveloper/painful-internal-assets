@@ -8,12 +8,12 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Triggers
     public class ScenarioAudioSequence : MonoBehaviour
     {
         [SerializeField] private List<SoundData> _soundDataSequence;
-        [SerializeField] private bool autoPlay = true;
+        [SerializeField] private bool _autoPlay = true;
 
 
         private void Start()
         {
-            if (autoPlay)
+            if (_autoPlay)
             {
                 StartCoroutine(WaitFrame());
             }
@@ -43,7 +43,7 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Triggers
         {
             yield return new WaitForEndOfFrame();
 
-            if (autoPlay)
+            if (_autoPlay)
             {
                 PlaySequence();
             }          

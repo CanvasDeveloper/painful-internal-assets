@@ -1,4 +1,4 @@
-namespace PainfulSmile.Runtime.Systems.AudioSystem.Triggers
+namespace PainfulSmile.Runtime.Systems.AudioSystem.Triggers.EnableOrDisable
 {
     public class PlayAudioOnEnable : AudioTriggerBase
     {

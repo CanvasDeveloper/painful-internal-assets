@@ -1,3 +1,4 @@
+using PainfulSmile.Runtime.Systems.AudioSystem.Triggers.Interfaces;
 using UnityEngine;
 
 namespace PainfulSmile.Runtime.Systems.AudioSystem.Triggers

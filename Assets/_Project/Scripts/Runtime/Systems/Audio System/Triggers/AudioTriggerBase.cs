@@ -4,13 +4,6 @@ using UnityEngine;
 
 namespace PainfulSmile.Runtime.Systems.AudioSystem.Triggers
 {
-    public enum AudioPlayType
-    {
-        WorldSpace3D,
-        Music,
-        Ambience,
-    }
-
     public abstract class AudioTriggerBase : MonoBehaviour
     {
         [SerializeField] private SoundData _soundToPlay;
