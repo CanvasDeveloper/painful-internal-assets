@@ -1,4 +1,4 @@
-﻿namespace PainfulSmile.Runtime.Systems.AudioSystem
+﻿namespace PainfulSmile.Runtime.Systems.AudioSystem.Core
 {
     public class AudioReference
     {

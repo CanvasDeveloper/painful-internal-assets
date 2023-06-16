@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PainfulSmile.Runtime.Systems.AudioSystem
+namespace PainfulSmile.Runtime.Systems.AudioSystem.Core
 {
     public class AudioSaveSystem
     {

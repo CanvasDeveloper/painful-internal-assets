@@ -1,7 +1,8 @@
-﻿using PainfulSmile.Runtime.Systems.AudioSystem.Scriptables;
+﻿using PainfulSmile.Runtime.Systems.AudioSystem.Core;
+using PainfulSmile.Runtime.Systems.AudioSystem.Scriptables;
 using UnityEngine;
 
-namespace PainfulSmile.Runtime.Systems.AudioSystem
+namespace PainfulSmile.Runtime.Systems.AudioSystem.Utilities
 {
     public class AutoAudioPlay : MonoBehaviour
     {
@@ -9,7 +10,7 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem
 
         private void Start()
         {
-            if(AudioManager.Instance.GetCurrentSoundData() == data)
+            if (AudioManager.Instance.GetCurrentSoundData() == data)
             {
                 return;
             }

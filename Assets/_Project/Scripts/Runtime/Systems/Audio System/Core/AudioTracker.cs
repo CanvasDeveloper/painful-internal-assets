@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace PainfulSmile.Runtime.Systems.AudioSystem
+namespace PainfulSmile.Runtime.Systems.AudioSystem.Core
 {
     public class AudioTracker : MonoBehaviour
     {
@@ -24,14 +24,14 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem
 
         private void LateUpdate()
         {
-            if(!_initialized)
+            if (!_initialized)
             {
                 return;
             }
 
-            if(!_target)
+            if (!_target)
             {
-                if(_autoStopAudioOnDestroyTrackedObject)
+                if (_autoStopAudioOnDestroyTrackedObject)
                 {
                     _source.Stop();
                     _initialized = false;
@@ -43,7 +43,7 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem
 
             _currentTimer += Time.deltaTime;
 
-            if(_currentTimer >= _maxTimer)
+            if (_currentTimer >= _maxTimer)
             {
                 _currentTimer = 0;
 

@@ -1,12 +1,13 @@
+using PainfulSmile.Runtime.Core;
 using PainfulSmile.Runtime.Systems.AudioSystem.Scriptables;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using Random = UnityEngine.Random;
 
-namespace PainfulSmile.Runtime.Systems.AudioSystem
+namespace PainfulSmile.Runtime.Systems.AudioSystem.Core
 {
-    public class AudioManager : Core.Singleton<AudioManager>
+    public class AudioManager : Singleton<AudioManager>
     {
         [Header("Mixer Reference and Values")]
         [SerializeField] private AudioMixer _mixer;
@@ -58,7 +59,7 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem
                 ChangeMainMusic(ambience);
                 ChangeMainFilter(baseFilter);
             }
-                
+
         }
 
         public void ChangeMainMusic(SoundData data)
