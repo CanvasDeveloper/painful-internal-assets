@@ -15,24 +15,18 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Core
         [Header("Audio Settings")]
         [SerializeField] private AudioSource _musicSource;
         [SerializeField] private AudioSource _ambienceSource;
-        [SerializeField] private SoundData baseFilter;
-        [SerializeField] private SoundData ambience;
-        [SerializeField] private SoundData tenseAmbience;
-
-        [SerializeField] private bool autoAudioPlay = true;
 
         [Header("Pool Settings")]
         [SerializeField] private int _poolListSize;
+
+        private readonly List<AudioSource> _sourceList = new();
+        private const string AudioSourceNamePrefix = "TempAudio_";
 
         [field: Header("Default Audio Settings")]
         [field: SerializeField] public float DefaultValue { get; private set; } = -30f;
         [field: SerializeField] public float MinValue { get; private set; } = -80f;
         [field: SerializeField] public float MaxValue { get; private set; } = 0f;
         [field: SerializeField] public bool DefaultMutedValue { get; private set; } = false;
-
-        private readonly List<AudioSource> _sourceList = new();
-
-        private const string AudioSourceNamePrefix = "TempAudio_";
 
         private AudioSaveSystem saveSystem;
         private SoundData _currentMusicData;
@@ -53,13 +47,6 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Core
             {
                 InstantiateAudioSource(AudioSourceNamePrefix + i.ToString());
             }
-
-            if (autoAudioPlay)
-            {
-                ChangeMainMusic(ambience);
-                ChangeMainFilter(baseFilter);
-            }
-
         }
 
         public void ChangeMainMusic(SoundData data)
@@ -75,29 +62,29 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Core
             _musicSource.Play();
         }
 
-        public void ChangeMainFilter(SoundData data)
+        public void ChangeMainAmbience(SoundData data)
         {
             SetSourceSettings(data, _ambienceSource);
             _ambienceSource.Play();
         }
-        public float GetCurrentAudioValue(AudioType audioType)
+        public float GetCurrentAudioValue(AudioSourceType audioType)
         {
             return saveSystem.LoadVolumeValue(audioType);
         }
 
-        public bool GetMuteAudioValue(AudioType audioType)
+        public bool GetMuteAudioValue(AudioSourceType audioType)
         {
             return saveSystem.LoadMuteValue(audioType);
         }
 
-        public void SetMixerVolume(AudioType audioType, float volume)
+        public void SetMixerVolume(AudioSourceType audioType, float volume)
         {
             _mixer.SetFloat(audioType.ToString(), volume);
 
             saveSystem.SaveAudioValue(audioType, volume);
         }
 
-        public void SetMute(AudioType audioType, bool muteValue, float newVolumeValue)
+        public void SetMute(AudioSourceType audioType, bool muteValue, float newVolumeValue)
         {
             SetMixerVolume(audioType, newVolumeValue);
 

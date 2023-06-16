@@ -33,9 +33,9 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Core
                 return;
             }
 
-            AudioReference masterReference = CreateReference(AudioType.MASTER, PainfulSmileKeys.Audio.MasterAudioVolumeKey, PainfulSmileKeys.Audio.MasterAudioMuteKey);
-            AudioReference musicReference = CreateReference(AudioType.MUSIC, PainfulSmileKeys.Audio.MusicAudioVolumeKey, PainfulSmileKeys.Audio.MusicAudioMuteKey);
-            AudioReference sfxReference = CreateReference(AudioType.SFX, PainfulSmileKeys.Audio.SfxAudioVolumeKey, PainfulSmileKeys.Audio.SfxAudioMuteKey);
+            AudioReference masterReference = CreateReference(AudioSourceType.MASTER, PainfulSmileKeys.Audio.MasterAudioVolumeKey, PainfulSmileKeys.Audio.MasterAudioMuteKey);
+            AudioReference musicReference = CreateReference(AudioSourceType.MUSIC, PainfulSmileKeys.Audio.MusicAudioVolumeKey, PainfulSmileKeys.Audio.MusicAudioMuteKey);
+            AudioReference sfxReference = CreateReference(AudioSourceType.SFX, PainfulSmileKeys.Audio.SfxAudioVolumeKey, PainfulSmileKeys.Audio.SfxAudioMuteKey);
 
             _audioPlayerPrefsReferences.Add(masterReference);
             _audioPlayerPrefsReferences.Add(musicReference);
@@ -58,7 +58,7 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Core
             }
         }
 
-        internal float LoadVolumeValue(AudioType audioType)
+        internal float LoadVolumeValue(AudioSourceType audioType)
         {
             AudioReference audioReference = GetReference(audioType);
 
@@ -72,13 +72,13 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Core
                 return PlayerPrefs.GetFloat(audioReference.key);
             }
 
-            if (audioType == AudioType.MASTER || audioType == AudioType.MUSIC)
+            if (audioType == AudioSourceType.MASTER || audioType == AudioSourceType.MUSIC)
                 return _manager.MaxValue;
 
             return _manager.DefaultValue;
         }
 
-        internal bool LoadMuteValue(AudioType audioType)
+        internal bool LoadMuteValue(AudioSourceType audioType)
         {
             AudioReference audioReference = GetReference(audioType);
 
@@ -95,7 +95,7 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Core
             return _manager.DefaultMutedValue;
         }
 
-        internal void SaveAudioValue(AudioType audioType, float value)
+        internal void SaveAudioValue(AudioSourceType audioType, float value)
         {
             AudioReference audioReference = GetReference(audioType);
 
@@ -108,7 +108,7 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Core
             PlayerPrefs.Save();
         }
 
-        internal void SaveMuteValue(AudioType audioType, bool value)
+        internal void SaveMuteValue(AudioSourceType audioType, bool value)
         {
             AudioReference audioReference = GetReference(audioType);
 
@@ -121,7 +121,7 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Core
             PlayerPrefs.Save();
         }
 
-        private AudioReference CreateReference(AudioType type, string playerPrefsKey, string muteKey)
+        private AudioReference CreateReference(AudioSourceType type, string playerPrefsKey, string muteKey)
         {
             return new()
             {
@@ -131,7 +131,7 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Core
             };
         }
 
-        private AudioReference GetReference(AudioType type)
+        private AudioReference GetReference(AudioSourceType type)
         {
             AudioReference audioReference = null;
 

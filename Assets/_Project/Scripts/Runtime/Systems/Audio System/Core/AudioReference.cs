@@ -2,7 +2,7 @@
 {
     public class AudioReference
     {
-        public AudioType type;
+        public AudioSourceType type;
         public string key;
         public string muteKey;
     }

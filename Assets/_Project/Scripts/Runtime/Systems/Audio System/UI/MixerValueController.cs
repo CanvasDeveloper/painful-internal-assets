@@ -7,7 +7,7 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.IU
     public class MixerValueController : MonoBehaviour
     {
         [Header("Mixer Values")]
-        [SerializeField] private AudioType audioType;
+        [SerializeField] private AudioSourceType audioType;
 
         [Header("UI Elements")]
         [SerializeField] private Slider _volumeSlider;
