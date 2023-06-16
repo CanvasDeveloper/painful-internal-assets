@@ -7,7 +7,7 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.IU
     public class MixerValueController : MonoBehaviour
     {
         [Header("Mixer Values")]
-        [SerializeField] private AudioSourceType audioType;
+        [SerializeField] private AudioSourceType _audioType;
 
         [Header("UI Elements")]
         [SerializeField] private Slider _volumeSlider;
@@ -21,9 +21,9 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.IU
             _volumeSlider.minValue =  AudioManager.Instance.MinValue;
             _volumeSlider.maxValue = AudioManager.Instance.MaxValue;
 
-            _volumeSlider.value = AudioManager.Instance.GetCurrentAudioValue(audioType);
+            _volumeSlider.value = AudioManager.Instance.GetCurrentAudioValue(_audioType);
 
-            Mute(AudioManager.Instance.GetMuteAudioValue(audioType));
+            Mute(AudioManager.Instance.GetMuteAudioValue(_audioType));
         }
 
         private void OnDisable()
@@ -34,7 +34,7 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.IU
 
         public void ChangeVolume(float volume)
         {
-            AudioManager.Instance.SetMixerVolume(audioType, volume);
+            AudioManager.Instance.SetMixerVolume(_audioType, volume);
         }
 
         public void Mute(bool value)
@@ -44,7 +44,7 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.IU
 
             float targetVolume = value ? AudioManager.Instance.MinValue : _volumeSlider.value;
 
-            AudioManager.Instance.SetMute(audioType, value, targetVolume);
+            AudioManager.Instance.SetMute(_audioType, value, targetVolume);
         }
     }
 }

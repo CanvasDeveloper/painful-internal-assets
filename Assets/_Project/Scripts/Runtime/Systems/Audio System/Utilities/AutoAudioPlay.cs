@@ -6,16 +6,16 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Utilities
 {
     public class AutoAudioPlay : MonoBehaviour
     {
-        [SerializeField] private SoundData data;
+        [SerializeField] private SoundData _data;
 
         private void Start()
         {
-            if (AudioManager.Instance.GetCurrentSoundData() == data)
+            if (AudioManager.Instance.GetCurrentSoundData() == _data)
             {
                 return;
             }
 
-            AudioManager.Instance.ChangeMainMusic(data);
+            AudioManager.Instance.ChangeMainMusic(_data);
         }
     }
 }

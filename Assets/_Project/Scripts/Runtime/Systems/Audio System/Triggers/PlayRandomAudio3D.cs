@@ -6,14 +6,14 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Triggers
 {
     public class PlayRandomAudio3D : MonoBehaviour
     {
-        [SerializeField] private SoundData[] sounds;
+        [SerializeField] private SoundData[] _sounds;
 
         public void Play()
         {
-            if (sounds.Length > 0)
+            if (_sounds.Length > 0)
             {
-                int randSound = Random.Range(0, sounds.Length);
-                AudioManager.Instance.Play3DAudio(sounds[randSound], transform.position);
+                int randSound = Random.Range(0, _sounds.Length);
+                AudioManager.Instance.Play3DAudio(_sounds[randSound], transform.position);
             }
         }
     }

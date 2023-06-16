@@ -19,29 +19,29 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Core
         [Header("Pool Settings")]
         [SerializeField] private int _poolListSize;
 
-        private readonly List<AudioSource> _sourceList = new();
-        private const string AudioSourceNamePrefix = "TempAudio_";
-
         [field: Header("Default Audio Settings")]
         [field: SerializeField] public float DefaultValue { get; private set; } = -30f;
         [field: SerializeField] public float MinValue { get; private set; } = -80f;
         [field: SerializeField] public float MaxValue { get; private set; } = 0f;
         [field: SerializeField] public bool DefaultMutedValue { get; private set; } = false;
 
-        private AudioSaveSystem saveSystem;
+        private readonly List<AudioSource> _sourceList = new();
+        private const string AudioSourceNamePrefix = "TempAudio_";
+
+        private AudioSaveSystem _saveSystem;
         private SoundData _currentMusicData;
 
         protected override void Awake()
         {
             base.Awake();
 
-            saveSystem = new AudioSaveSystem(this);
+            _saveSystem = new AudioSaveSystem(this);
         }
 
         private void Start()
         {
-            saveSystem.SetDefaultMixerVolumes();
-            saveSystem.SetDefaultMixerMutes();
+            _saveSystem.SetDefaultMixerVolumes();
+            _saveSystem.SetDefaultMixerMutes();
 
             for (int i = 0; i < _poolListSize; i++)
             {
@@ -69,26 +69,26 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Core
         }
         public float GetCurrentAudioValue(AudioSourceType audioType)
         {
-            return saveSystem.LoadVolumeValue(audioType);
+            return _saveSystem.LoadVolumeValue(audioType);
         }
 
         public bool GetMuteAudioValue(AudioSourceType audioType)
         {
-            return saveSystem.LoadMuteValue(audioType);
+            return _saveSystem.LoadMuteValue(audioType);
         }
 
         public void SetMixerVolume(AudioSourceType audioType, float volume)
         {
             _mixer.SetFloat(audioType.ToString(), volume);
 
-            saveSystem.SaveAudioValue(audioType, volume);
+            _saveSystem.SaveAudioValue(audioType, volume);
         }
 
         public void SetMute(AudioSourceType audioType, bool muteValue, float newVolumeValue)
         {
             SetMixerVolume(audioType, newVolumeValue);
 
-            saveSystem.SaveMuteValue(audioType, muteValue);
+            _saveSystem.SaveMuteValue(audioType, muteValue);
         }
 
         public void Play3DAudio(SoundData sound, Transform trackedTransform, float delay = 0)
@@ -113,6 +113,7 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Core
 
             currentSource.PlayDelayed(delay);
         }
+
         public void StopAudio(SoundData sound)
         {
             foreach (AudioSource audioSource in _sourceList)
@@ -121,6 +122,7 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Core
                     audioSource.Stop();
             }
         }
+
         public void StopAudio(List<SoundData> soundList)
         {
             foreach (SoundData sound in soundList)
@@ -132,6 +134,7 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Core
                 }
             }
         }
+
         public void SetSourceSettings(SoundData sound, AudioSource source, float spatialBlend = 1f)
         {
             source.clip = sound.Clip;
@@ -185,7 +188,7 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Core
         [ContextMenu("Delete Prefs")]
         public void DeletePrefs()
         {
-            saveSystem.DeletePlayerPrefs();
+            _saveSystem.DeletePlayerPrefs();
         }
 #endif
     }
