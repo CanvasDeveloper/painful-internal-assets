@@ -1,22 +1,27 @@
 using PainfulSmile.Runtime.Systems.AudioSystem.Core;
 using PainfulSmile.Runtime.Systems.AudioSystem.Scriptables;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace PainfulSmile.Runtime.Systems.AudioSystem.Triggers
 {
     public abstract class AudioTriggerBase : MonoBehaviour
     {
-        [SerializeField] private SoundData _soundToPlay;
+        [SerializeField] private List<SoundData> _sounds;
 
         [Header("Settings")]
-        public float _delay;
+        [SerializeField] private float _delay;
         [SerializeField] private float _cooldown;
         [SerializeField] private bool _canTrigger;
-        
+
+        public virtual void PlayFirstSound()
+        {
+            PlaySound(0);
+        }
 
         [ContextMenu("Play Audio")]
-        public virtual void PlaySound()
+        public virtual void PlaySound(int index)
         {
             if (!AudioManager.Instance)
             {
@@ -28,9 +33,9 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Triggers
                 return;
             }
             
-            AudioManager.Instance.Play3DAudio(_soundToPlay, transform.position, _delay);
+            AudioManager.Instance.Play3DAudio(_sounds[index], transform.position, _delay);
 
-            if (_soundToPlay.Loop)
+            if (_sounds[index].Loop)
             {
                 return;
             }
@@ -42,19 +47,22 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Triggers
 
             StartCoroutine(DelayAndCooldown());
         }
+
         public virtual void StopSound()
         {
             if (!AudioManager.Instance)
             {
                 return;
             }
-            AudioManager.Instance.StopAudio(_soundToPlay);
+            AudioManager.Instance.StopAudio(_sounds);
         }
-        IEnumerator DelayAndCooldown()
+        private IEnumerator DelayAndCooldown()
         {
             _canTrigger = false;
+
             yield return new WaitForSeconds(_delay);
             yield return new WaitForSeconds(_cooldown);
+
             _canTrigger = true;
         }
     }

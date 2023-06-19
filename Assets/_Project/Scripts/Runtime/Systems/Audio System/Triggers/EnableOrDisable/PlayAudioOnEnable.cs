@@ -4,7 +4,7 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Triggers.EnableOrDisable
     {
         private void OnEnable()
         {
-            PlaySound();
+            PlayFirstSound();
         }
     }
 }

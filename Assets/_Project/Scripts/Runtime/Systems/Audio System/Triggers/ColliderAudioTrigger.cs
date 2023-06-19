@@ -9,7 +9,7 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Triggers
         {
             if (other.TryGetComponent(out IAudioTriggerAgent audioAgent))
             {
-                PlaySound();
+                PlayFirstSound();
             }
         }
     }

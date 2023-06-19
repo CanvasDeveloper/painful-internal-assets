@@ -19,7 +19,7 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Core
         [Header("Pool Settings")]
         [SerializeField] private int _poolListSize;
 
-        [field: Header("Default Audio Settings")]
+        [field: Header("Default Mixer Audio Settings")]
         [field: SerializeField] public float DefaultValue { get; private set; } = -30f;
         [field: SerializeField] public float MinValue { get; private set; } = -80f;
         [field: SerializeField] public float MaxValue { get; private set; } = 0f;
@@ -43,6 +43,11 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Core
             _saveSystem.SetDefaultMixerVolumes();
             _saveSystem.SetDefaultMixerMutes();
 
+            InitializePool();
+        }
+
+        private void InitializePool()
+        {
             for (int i = 0; i < _poolListSize; i++)
             {
                 InstantiateAudioSource(AudioSourceNamePrefix + i.ToString());
@@ -62,6 +67,9 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Core
             _musicSource.Play();
         }
 
+        /// <summary>
+        /// Dont use yet, its comming in version 1.1.0
+        /// </summary>
         public void ChangeMainAmbience(SoundData data)
         {
             SetSourceSettings(data, _ambienceSource);
@@ -91,6 +99,9 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Core
             _saveSystem.SaveMuteValue(audioType, muteValue);
         }
 
+        /// <summary>
+        /// Dont use yet, its comming in version 1.1.0
+        /// </summary>
         public void Play3DAudio(SoundData sound, Transform trackedTransform, float delay = 0)
         {
             AudioSource currentSource = GetOrCreateSource();
@@ -159,7 +170,7 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Core
             return newAudioSource;
         }
 
-        public AudioSource GetOrCreateSource()
+        private AudioSource GetOrCreateSource()
         {
             AudioSource targetSource = null;
 
@@ -177,11 +188,6 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Core
             }
 
             return targetSource;
-        }
-
-        public SoundData GetCurrentSoundData()
-        {
-            return _currentMusicData;
         }
 
 #if UNITY_EDITOR

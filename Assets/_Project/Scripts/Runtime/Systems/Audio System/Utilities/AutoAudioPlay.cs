@@ -10,11 +10,6 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Utilities
 
         private void Start()
         {
-            if (AudioManager.Instance.GetCurrentSoundData() == _data)
-            {
-                return;
-            }
-
             AudioManager.Instance.ChangeMainMusic(_data);
         }
     }
