@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace PainfulSmile.Runtime.Systems.AudioSystem.Utilities
 {
-    public class AutoAudioPlay : MonoBehaviour
+    public class AutoMusicPlay : MonoBehaviour
     {
-        [SerializeField] private SoundData _data;
+        [SerializeField] private SoundData _music;
 
         private void Start()
         {
-            AudioManager.Instance.ChangeMainMusic(_data);
+            AudioManager.Instance.ChangeMainMusic(_music);
         }
     }
 }

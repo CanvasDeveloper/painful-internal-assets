@@ -13,7 +13,8 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Triggers
         [Header("Settings")]
         [SerializeField] private float _delay;
         [SerializeField] private float _cooldown;
-        [SerializeField] private bool _canTrigger;
+
+        private bool _canTrigger = true;
 
         public virtual void PlayFirstSound()
         {
@@ -24,6 +25,11 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Triggers
         public virtual void PlaySound(int index)
         {
             if (!AudioManager.Instance)
+            {
+                return;
+            }
+
+            if(!_sounds[index])
             {
                 return;
             }
@@ -54,6 +60,7 @@ namespace PainfulSmile.Runtime.Systems.AudioSystem.Triggers
             {
                 return;
             }
+
             AudioManager.Instance.StopAudio(_sounds);
         }
         private IEnumerator DelayAndCooldown()
