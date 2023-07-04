@@ -1,3 +1,4 @@
+using PainfulSmile.Runtime.Core;
 using PainfulSmile.Runtime.Systems.OptionsSystem.Camera;
 using PainfulSmile.Runtime.Systems.OptionsSystem.Utilities;
 using System;
@@ -5,7 +6,7 @@ using UnityEngine;
 
 namespace PainfulSmile.Runtime.Systems.OptionsSystem.Core
 {
-    public class OptionsManager : Runtime.Core.Singleton<OptionsManager>
+    public class OptionsManager : Singleton<OptionsManager>
     {
         public event Action<OptionType, float> OnUpdateOptionValue;
 
