@@ -9,7 +9,6 @@ namespace PainfulSmile.Runtime.Systems.OptionsSystem.UI
     public class ResolutionDropDown : DropDownBase
     {
         private List<Resolution> _filteredResolutions = new();
-
         private readonly OptionType _resolutionOption = OptionType.RESOLUTION_INDEX;
 
         private void OnEnable()
@@ -27,7 +26,7 @@ namespace PainfulSmile.Runtime.Systems.OptionsSystem.UI
 
             for (int i = 0; i < _filteredResolutions.Count; i++)
             {
-                string resolutionOption = _filteredResolutions[i].width + "x" + _filteredResolutions[i].height + " " + _filteredResolutions[i].refreshRate + "Hz";
+                string resolutionOption = _filteredResolutions[i].width + "x" + _filteredResolutions[i].height + " " + _filteredResolutions[i].refreshRateRatio.value + "Hz";
                 options.Add(resolutionOption); 
             }
 

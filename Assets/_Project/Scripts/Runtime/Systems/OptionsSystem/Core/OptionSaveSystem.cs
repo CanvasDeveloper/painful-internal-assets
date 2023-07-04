@@ -32,14 +32,14 @@ namespace PainfulSmile.Runtime.Systems.OptionsSystem.Core
                 return;
             }
 
-            OptionReference mouseSensibilityReference = CreateReference(OptionType.MOUSE_SENSIBILITY, PainfulSmileKeys.MouseSensibilityKey);
-            OptionReference fovReference = CreateReference(OptionType.FOV, PainfulSmileKeys.FOVKey);
+            OptionReference mouseSensibilityReference = CreateReference(OptionType.MOUSE_SENSIBILITY, PainfulSmileKeys.Options.MouseSensibilityKey);
+            OptionReference fovReference = CreateReference(OptionType.FOV, PainfulSmileKeys.Options.FOVKey);
 
-            OptionReference gamepadVibrationReference = CreateReference(OptionType.GAMEPAD_VIBRATION_TOGGLE, PainfulSmileKeys.GamepadVibrationKey);
+            OptionReference gamepadVibrationReference = CreateReference(OptionType.GAMEPAD_VIBRATION_TOGGLE, PainfulSmileKeys.Options.GamepadVibrationKey);
 
-            OptionReference vsyncReference = CreateReference(OptionType.VSYNC_TOGGLE, PainfulSmileKeys.VsyncKey);
-            OptionReference fullscreen = CreateReference(OptionType.FULLSCREEN_TOGGLE, PainfulSmileKeys.FullscreenKey);
-            OptionReference resolutionReference = CreateReference(OptionType.RESOLUTION_INDEX, PainfulSmileKeys.ResolutionKey);
+            OptionReference vsyncReference = CreateReference(OptionType.VSYNC_TOGGLE, PainfulSmileKeys.Options.VsyncKey);
+            OptionReference fullscreen = CreateReference(OptionType.FULLSCREEN_TOGGLE, PainfulSmileKeys.Options.FullscreenKey);
+            OptionReference resolutionReference = CreateReference(OptionType.RESOLUTION_INDEX, PainfulSmileKeys.Options.ResolutionKey);
 
             _optionPlayerPrefsReferences.Add(mouseSensibilityReference);
             _optionPlayerPrefsReferences.Add(fovReference);
