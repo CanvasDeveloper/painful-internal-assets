@@ -30,7 +30,7 @@ namespace PainfulSmile.Runtime.Systems.OptionsSystem.UI
                 options.Add(resolutionOption); 
             }
 
-            int resolutionIndex = OptionsManager.Instance.GetCurrentValueInt(_resolutionOption, -1);
+            int resolutionIndex = OptionsManager.Instance.GetValueInt(_resolutionOption, -1);
 
             if (resolutionIndex == -1)
             {

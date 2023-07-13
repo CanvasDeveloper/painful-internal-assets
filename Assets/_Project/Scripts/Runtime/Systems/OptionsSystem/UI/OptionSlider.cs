@@ -14,7 +14,7 @@ namespace PainfulSmile.Runtime.Systems.OptionsSystem.UI
         {
             SetMinMax(_camSettings.MinFovValue, _camSettings.MaxFovValue);
 
-            slider.value = OptionsManager.Instance.GetCurrentValueFloat(optionType, _camSettings.FovDefaultValue);
+            slider.value = OptionsManager.Instance.GetValueFloat(optionType, _camSettings.FovDefaultValue);
 
             AddListener();
         }

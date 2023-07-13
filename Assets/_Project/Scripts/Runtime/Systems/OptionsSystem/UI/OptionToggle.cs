@@ -9,7 +9,7 @@ namespace PainfulSmile.Runtime.Systems.OptionsSystem.UI.Base
 
         protected virtual void OnEnable()
         {
-            toggle.isOn = OptionsManager.Instance.GetCurrentValueInt(_optionType, defaultValue ? 1 : 0) == 1;
+            toggle.isOn = OptionsManager.Instance.GetValueInt(_optionType, defaultValue ? 1 : 0) == 1;
         }
 
         protected override void ToggleAction(bool value)

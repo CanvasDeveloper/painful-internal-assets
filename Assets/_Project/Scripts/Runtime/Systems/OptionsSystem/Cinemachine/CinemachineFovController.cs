@@ -18,7 +18,7 @@ namespace PainfulSmile.Runtime.Systems.OptionsSystem.Cinemachine
 
         private void Start()
         {
-            ReceiveValue(OptionType, OptionsManager.Instance.GetCurrentValueFloat(OptionType, _camSettings.FovDefaultValue));
+            ReceiveValue(OptionType, OptionsManager.Instance.GetValueFloat(OptionType, _camSettings.FovDefaultValue));
             RegisterGlobalCallback(this);
         }
 

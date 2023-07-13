@@ -38,14 +38,14 @@ namespace PainfulSmile.Runtime.Systems.OptionsSystem.Core
 
         private void InitializeGlobalSettings()
         {
-            float sensibility = GetCurrentValueFloat(OptionType.MOUSE_SENSIBILITY, _cameraDefaultData.MouseSensDefaultValue);
-            float fov = GetCurrentValueFloat(OptionType.FOV, _cameraDefaultData.FovDefaultValue);
+            float sensibility = GetValueFloat(OptionType.MOUSE_SENSIBILITY, _cameraDefaultData.MouseSensDefaultValue);
+            float fov = GetValueFloat(OptionType.FOV, _cameraDefaultData.FovDefaultValue);
 
-            int vibration = GetCurrentValueInt(OptionType.GAMEPAD_VIBRATION_TOGGLE, _gamepadVibrationDefaultData.Value ? 1 : 0);
+            int vibration = GetValueInt(OptionType.GAMEPAD_VIBRATION_TOGGLE, _gamepadVibrationDefaultData.Value ? 1 : 0);
 
-            int resolution = GetCurrentValueInt(OptionType.RESOLUTION_INDEX, ResolutionUtility.GetCurrentResolutionIndex(ResolutionUtility.GetCompatibleResolutions()));
-            int vsync = GetCurrentValueInt(OptionType.VSYNC_TOGGLE, _vsyncDefaultData.Value ? 1 : 0);
-            int fullscreen = GetCurrentValueInt(OptionType.FULLSCREEN_TOGGLE, _fullscreenDefaultData.Value ? 1 : 0);
+            int resolution = GetValueInt(OptionType.RESOLUTION_INDEX, ResolutionUtility.GetCurrentResolutionIndex(ResolutionUtility.GetCompatibleResolutions()));
+            int vsync = GetValueInt(OptionType.VSYNC_TOGGLE, _vsyncDefaultData.Value ? 1 : 0);
+            int fullscreen = GetValueInt(OptionType.FULLSCREEN_TOGGLE, _fullscreenDefaultData.Value ? 1 : 0);
 
             UpdateOptions(OptionType.MOUSE_SENSIBILITY, sensibility);
             UpdateOptions(OptionType.FOV, fov);
@@ -57,12 +57,12 @@ namespace PainfulSmile.Runtime.Systems.OptionsSystem.Core
             UpdateOptions(OptionType.FULLSCREEN_TOGGLE, fullscreen);
         }
 
-        public float GetCurrentValueFloat(OptionType optionType, float defaultValue)
+        public float GetValueFloat(OptionType optionType, float defaultValue)
         {
             return _saveSystem.LoadFromPrefsFloat(optionType, defaultValue);
         }
 
-        public int GetCurrentValueInt(OptionType optionType, int defaultValue)
+        public int GetValueInt(OptionType optionType, int defaultValue)
         {
             return _saveSystem.LoadFromPrefsInt(optionType, defaultValue);
         }
