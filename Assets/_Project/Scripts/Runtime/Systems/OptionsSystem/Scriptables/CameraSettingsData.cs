@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace PainfulSmile.Runtime.Systems.OptionsSystem.Camera
 {
-    [CreateAssetMenu(fileName = "CameraSettings", menuName = PainfulSmileKeys.ScriptablePath + "CameraSettings")]
+    [CreateAssetMenu(fileName = "NewCameraSettings", menuName = PainfulSmileKeys.ScriptablePath + "Camera Settings")]
     public class CameraSettingsData : ScriptableObject
     {
         [Header("Mouse Sensibility Values")]

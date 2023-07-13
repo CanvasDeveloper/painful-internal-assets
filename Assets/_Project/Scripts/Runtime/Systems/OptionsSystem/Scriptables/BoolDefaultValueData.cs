@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace PainfulSmile.Runtime.Systems.OptionsSystem
 {
-    [CreateAssetMenu(fileName = "Bool Value", menuName = PainfulSmileKeys.ScriptablePath + "Bool Value")]
+    [CreateAssetMenu(fileName = "NewBoolValue", menuName = PainfulSmileKeys.ScriptablePath + "Bool Value")]
     public class BoolDefaultValueData : ScriptableObject
     {
        [field: SerializeField] public bool Value { get; private set; }
