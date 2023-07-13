@@ -629,7 +629,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1992898449332964221}
   - component: {fileID: 2262807840482611437}
-  - component: {fileID: 8914677330582243689}
+  - component: {fileID: 6627539537657324036}
   m_Layer: 5
   m_Name: VSyncToggle
   m_TagString: Untagged
@@ -707,7 +707,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
---- !u!114 &8914677330582243689
+--- !u!114 &6627539537657324036
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -716,10 +716,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1389739021664415981}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7c5c0828c2eb7b4992ce2ca17adbe2c, type: 3}
+  m_Script: {fileID: 11500000, guid: 3682fb0ca8136dd4aba5abeb9d2d5e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   defaultValue: {fileID: 11400000, guid: c848852d1bcd10c468729fbf8d8282d6, type: 2}
+  _optionType: 3
 --- !u!1 &1507857874743663742
 GameObject:
   m_ObjectHideFlags: 0
@@ -1864,7 +1865,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4257894992957798404}
   - component: {fileID: 1943089338662487995}
-  - component: {fileID: 7409429522116782389}
+  - component: {fileID: 8552415070116828840}
   m_Layer: 5
   m_Name: GamepadVibrationToggle
   m_TagString: Untagged
@@ -1942,7 +1943,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
---- !u!114 &7409429522116782389
+--- !u!114 &8552415070116828840
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1951,10 +1952,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4163537311703171078}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e4796df93ed67d4ea6ebbc0c246b970, type: 3}
+  m_Script: {fileID: 11500000, guid: 3682fb0ca8136dd4aba5abeb9d2d5e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   defaultValue: {fileID: 11400000, guid: d5a6de863a9ce1a4a8cb8d8690afef08, type: 2}
+  _optionType: 2
 --- !u!1 &4244972997555210767
 GameObject:
   m_ObjectHideFlags: 0
@@ -3320,7 +3322,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5613435737844986782}
   - component: {fileID: 6504244735877172913}
-  - component: {fileID: 9093119718544799507}
+  - component: {fileID: 5497800379418411222}
   m_Layer: 5
   m_Name: FullScreenToggle
   m_TagString: Untagged
@@ -3398,7 +3400,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
---- !u!114 &9093119718544799507
+--- !u!114 &5497800379418411222
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3407,10 +3409,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7444016549474444260}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8337d8931499ef641aa49b099440ce80, type: 3}
+  m_Script: {fileID: 11500000, guid: 3682fb0ca8136dd4aba5abeb9d2d5e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   defaultValue: {fileID: 11400000, guid: b3172a54ef1fb9e4db25974155a01d2a, type: 2}
+  _optionType: 4
 --- !u!1 &7552202779917800184
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ namespace PainfulSmile.Runtime.Systems.OptionsSystem.UI
     public class OptionSlider : SliderBase
     {
         [SerializeField] private CameraSettingsData _camSettings;
-        [SerializeField] protected OptionType optionType;
+        [SerializeField] private OptionType optionType;
 
         private void OnEnable()
         {

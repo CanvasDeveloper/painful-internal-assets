@@ -1,10 +1,11 @@
 ﻿using PainfulSmile.Runtime.Systems.OptionsSystem.Core;
+using UnityEngine;
 
 namespace PainfulSmile.Runtime.Systems.OptionsSystem.UI.Base
 {
-    public class OptionToggleBase : ToggleBase
+    public class OptionToggle : ToggleBase
     {
-        protected OptionType _optionType;
+        [SerializeField] private OptionType _optionType;
 
         protected virtual void OnEnable()
         {
