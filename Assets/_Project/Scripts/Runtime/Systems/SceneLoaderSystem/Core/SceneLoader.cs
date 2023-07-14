@@ -24,18 +24,7 @@ namespace PainfulSmile.Runtime.Systems.SceneLoaderSystem.Core
         [field: Header("Settings")]
         [field: SerializeField] public float DelayToStartLoad { get; private set; } = 2f;
 
-        [Header("DEBUG")]
-        [SerializeField] private bool _autoLoadNextScene = true;
-
         public int CurrentSceneIndex { get; private set; }
-
-        private void Start()
-        {
-            if (_autoLoadNextScene)
-            {
-                NextScene();
-            }
-        }
 
         public void LoadTitleScene()
         {
@@ -50,12 +39,10 @@ namespace PainfulSmile.Runtime.Systems.SceneLoaderSystem.Core
         [ContextMenu("Next Level")]
         public void NextScene()
         {
-            int targetIndex = SceneManager.GetActiveScene().buildIndex + 1;
+            int targetIndex = GetNextSceneIndex();
 
-            if (targetIndex >= CountBuildSettings())
+            if (targetIndex < 0)
             {
-                Debug.LogWarning("You are trying to load a next scene that does not exist in the build settings.");
-
                 return;
             }
 
@@ -96,19 +83,27 @@ namespace PainfulSmile.Runtime.Systems.SceneLoaderSystem.Core
             OnLoadFinishedEvent?.Invoke();
         }
 
-        public int CountBuildSettings()
+        public int GetSceneCountInBuildSettings()
         {
             return SceneManager.sceneCountInBuildSettings;
         }
 
-        public void MoveToOtherScene(int targetScene, GameObject objectToMove, bool useManagerEvents = false, Action preLoadScene = null, Action postLoadScene = null)
+        public int GetNextSceneIndex()
         {
-            if (useManagerEvents)
+            int targetSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+
+            if (targetSceneIndex >= GetSceneCountInBuildSettings())
             {
-                preLoadScene += OnLoadStartEvent;
-                postLoadScene += OnLoadFinishedEvent;
+                Debug.LogWarning("You are trying to load a next scene that does not exist in the build settings.");
+
+                return -1;
             }
 
+            return targetSceneIndex;
+        }
+
+        public void MoveToOtherScene(int targetScene, GameObject objectToMove, Action preLoadScene = null, Action postLoadScene = null)
+        {
             StartCoroutine(MovingObject(targetScene, objectToMove, preLoadScene, postLoadScene));
         }
 
