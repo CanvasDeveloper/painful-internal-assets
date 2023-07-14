@@ -1,12 +1,15 @@
 ﻿using PainfulSmile.Runtime.Systems.SceneLoaderSystem.Core;
+using UnityEngine;
 
 namespace PainfulSmile.Runtime.Systems.SceneLoaderSystem.UI.Buttons
 {
-    public class LoadNextSceneButton : ButtonBase
+    public class UILoadSceneByIndexButton : ButtonBase
     {
+        [SerializeField] private int _sceneIndex;
+
         protected override void ButtonAction()
         {
-            SceneLoader.Instance.NextScene();
+            SceneLoader.Instance.LoadSceneByIndex(_sceneIndex);
         }
     }
 }

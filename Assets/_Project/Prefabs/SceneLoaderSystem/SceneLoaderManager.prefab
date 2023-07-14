@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 7829436604294116923}
   - component: {fileID: 7829436604294116922}
   - component: {fileID: 7829436604294116868}
+  - component: {fileID: 4943131813573734704}
   m_Layer: 0
   m_Name: SceneLoaderManager
   m_TagString: Untagged
@@ -184,7 +185,7 @@ Transform:
   m_Children:
   - {fileID: 7829436605858674490}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7829436604294116922
 MonoBehaviour:
@@ -217,6 +218,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 70425204}
   _fadePanel: {fileID: 7829436605202456022}
+--- !u!114 &4943131813573734704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7829436604294116921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb1821ff7ed5c3d43a417987f1cd3f26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _loadingBar: {fileID: 5674826151000951768}
+  _slider: {fileID: 7829436604256450879}
+  _progressText: {fileID: 7829436605218755801}
 --- !u!1 &7829436604479763707
 GameObject:
   m_ObjectHideFlags: 0

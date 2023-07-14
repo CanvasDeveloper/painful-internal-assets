@@ -2,11 +2,11 @@
 
 namespace PainfulSmile.Runtime.Systems.SceneLoaderSystem.UI.Buttons
 {
-    public class ReloadSceneButton : ButtonBase
+    public class UILoadTitleButton : ButtonBase
     {
         protected override void ButtonAction()
         {
-            SceneLoader.Instance.ReloadScene();
+            SceneLoader.Instance.LoadTitleScene();
         }
     }
 }
