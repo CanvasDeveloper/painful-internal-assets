@@ -1,5 +1,8 @@
-﻿public struct UpdateProgressArgs
+﻿namespace PainfulSmile.Runtime.Utilities.AutoTimer.Core
 {
-    public float progressAmount;
-    public float progressPercent;
+    public struct UpdateProgressArgs
+    {
+        public float progressAmount;
+        public float progressPercent;
+    }
 }
