@@ -29,7 +29,9 @@ namespace PainfulSmile.Runtime.Utilities.AutoTimer.Core
             }
 
             if (ManagerInstance == null)
+            {
                 ManagerInstance = new GameObject("AutoTimerManager").AddComponent<AutoTimerManager>();
+            }
 
             ManagerInstance.AddToManager(this);
 
@@ -55,7 +57,7 @@ namespace PainfulSmile.Runtime.Utilities.AutoTimer.Core
 
             _currentUpdateEventThresholder -= deltaTime;
 
-            if (_currentUpdateEventThresholder < 0)
+            if (_currentUpdateEventThresholder <= 0)
             {
                 _currentUpdateEventThresholder = updateEventThresholder;
                 OnUpdateProgress?.Invoke(new UpdateProgressArgs
@@ -65,7 +67,7 @@ namespace PainfulSmile.Runtime.Utilities.AutoTimer.Core
                 });
             }
 
-            if (Time < 0)
+            if (Time <= 0)
             {
                 finished = true;
                 OnExpire?.Invoke();
